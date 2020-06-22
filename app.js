@@ -1,4 +1,9 @@
 /**
+<!-- ========= -->
+<!--    VIEW   -->
+<!-- ========= -->
+*/
+/**
  * Define a View AppView
  */
 const AppView = Backbone.View.extend({
@@ -38,6 +43,11 @@ const appView = new AppView();
  */
 const app = {};
 /**
+<!-- ========= -->
+<!--   MODEL   -->
+<!-- ========= -->
+*/
+/**
  * Define a Model Todo in namespace app
  */
 app.Todo = Backbone.Model.extend({
@@ -49,7 +59,6 @@ app.Todo = Backbone.Model.extend({
     completed: false
   }
 });
-
 /**
  * instance of app.Todo
  */
