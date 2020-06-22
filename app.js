@@ -29,8 +29,38 @@ const AppView = Backbone.View.extend({
         this.$el.html(this.template({who: 'Fab!'}));
     }
 });
-
 /**
  * Need to instantiate the component
  */
 const appView = new AppView();
+/**
+ * create namespace for our app
+ */
+const app = {};
+/**
+ * Define a Model Todo in namespace app
+ */
+app.Todo = Backbone.Model.extend({
+    /**
+     * Default values
+     */
+  defaults: {
+    title: '',
+    completed: false
+  }
+});
+
+/**
+ * instance of app.Todo
+ */
+const todo = new app.Todo(
+    {title: 'Learn Backbone.js',
+     completed: false
+    });
+
+console.log(`title = ${todo.get('title')}`); // "Learn Backbone.js"
+console.log(`completed = ${todo.get('completed')}`); // false
+todo.set('title', 'update Model');
+console.log(`title = ${todo.get('title')}`); // "update Model"
+todo.set('created_at', new Date());
+console.log(`created_at = ${todo.get('created_at')}`); // "update Model"
