@@ -73,3 +73,27 @@ todo.set('title', 'update Model');
 console.log(`title = ${todo.get('title')}`); // "update Model"
 todo.set('created_at', new Date());
 console.log(`created_at = ${todo.get('created_at')}`); // "update Model"
+/**
+<!-- ========= -->
+<!-- COLLECTION-->
+<!-- ========= -->
+*/
+app.TodoList = Backbone.Collection.extend({
+    model: app.Todo,
+    localStorage: new Store("backbone-todo")
+  });
+  
+/**
+ *  instance of the Collection
+ */
+const todoList = new app.TodoList();
+
+todoList.create({title: 'Learn Backbone\'s Collection'}); // notice: that `completed` will be set to false by default.
+
+const todo1 = new app.Todo({title: 'Learn Models', completed: true});
+todoList.add(todo1);
+
+console.log(todoList.pluck('title'));     // ["Learn Backbone's Collection", "Learn Models"]
+console.log(todoList.pluck('completed')); // [false, true]
+
+console.log(JSON.stringify(todoList)); // "[{"title":"Learn Backbone's Collection","completed":false,"id":"d9763e99-2267-75f5-62c3-9d7e40742aa6"},{"title":"Learn Models","completed":true}]"
